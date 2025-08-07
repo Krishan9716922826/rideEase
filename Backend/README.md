@@ -16,7 +16,7 @@ The request body should be in JSON format and include the following fields:
 
 - `fullname` (object):
   - `firstname` (string, required): User's first name (minimum 3 characters).
-  - `lastname` (string, optional): User's last name (minimum 3 characters).
+  - `lastname` (string, optional):User's last name || default = "".
 - `email` (string, required): User's email address (must be a valid email).
 - `password` (string, required): User's password (minimum 6 characters).
 
@@ -25,7 +25,7 @@ The request body should be in JSON format and include the following fields:
 - `user` (object):
   - `fullname` (object).
     - `firstname` (string): User's first name (minimum 3 characters).
-    - `lastname` (string): User's last name (minimum 3 characters).   
+    - `lastname` (string): User's last name || default = "".  
   - `email` (string): User's email address (must be a valid email).
   - `password` (string): User's password (minimum 6 characters).
 - `token` (String): JWT Token
@@ -56,7 +56,7 @@ The request body should be in JSON format and include the following fields:
 - `user` (object):
   - `fullname` (object).
     - `firstname` (string): User's first name (minimum 3 characters).
-    - `lastname` (string): User's last name (minimum 3 characters).   
+    - `lastname` (string): User's last name || default = "".   
   - `email` (string): User's email address (must be a valid email).
   - `password` (string): User's password (minimum 6 characters).
 - `token` (String): JWT Token
@@ -103,7 +103,7 @@ Requires a valid JWT token in the Authorization header or cookie:
 - `user` (object):
   - `fullname` (object).
     - `firstname` (string): User's first name (minimum 3 characters).
-    - `lastname` (string): User's last name (minimum 3 characters).   
+    - `lastname` (string): User's last name .   
   - `email` (string): User's email address (must be a valid email).
   - `password` (string): User's password (minimum 6 characters).
 - `token` (String): JWT Token## `/captains/register` Endpoint
