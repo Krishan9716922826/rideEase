@@ -113,8 +113,7 @@ module.exports.startRide = async (req, res) => {
       captain: req.captain,
     });
 
-    console.log(ride);
-
+    console.log("Ride found:", ride);
     sendMessageToSocketId(ride.user.socketId, {
       event: "ride-started",
       data: ride,
@@ -122,6 +121,7 @@ module.exports.startRide = async (req, res) => {
 
     return res.status(200).json(ride);
   } catch (err) {
+    console.error("Start ride error:", err);
     return res.status(500).json({ message: err.message });
   }
 };

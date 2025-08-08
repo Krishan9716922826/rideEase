@@ -48,7 +48,7 @@ const Home = () => {
   socket.on("ride-confirmed", (ride) => {
     setVehicleFound(false);
     setWaitingForDriver(true);
-    setRide(ride);
+    setRide(ride); // ride.otp is now available
   });
 
   socket.on("ride-started", (ride) => {
