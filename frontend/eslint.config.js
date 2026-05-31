@@ -29,6 +29,12 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
+      'react/prop-types': 'off',
+      // Apostrophes in JSX text are fine; this rule is pure noise.
+      'react/no-unescaped-entities': 'off',
+      // New JSX runtime doesn't require importing React; don't flag it as unused.
+      // Also allow intentionally-unused catch bindings (err) and leading-underscore vars.
+      'no-unused-vars': ['error', { varsIgnorePattern: '^(React|_)', argsIgnorePattern: '^_', caughtErrors: 'none' }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

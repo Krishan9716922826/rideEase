@@ -9,7 +9,7 @@ const Captainlogin = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
-  const { captain, setCaptain } = useContext(CaptainDataContext)
+  const { setCaptain } = useContext(CaptainDataContext)
   const navigate = useNavigate()
 
 

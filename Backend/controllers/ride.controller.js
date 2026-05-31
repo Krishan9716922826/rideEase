@@ -19,7 +19,6 @@ module.exports.createRide = async (req, res) => {
       destination,
       vehicleType,
     });
-    res.status(201).json(ride);
 
     const pickupCoordinates = await mapService.getAddressCoordinate(pickup);
 
@@ -35,21 +34,14 @@ module.exports.createRide = async (req, res) => {
       .findOne({ _id: ride._id })
       .populate("user");
 
-    console.log(
-      "Captains in radius:",
-      captainsInRadius.map((c) => ({
-        id: c._id,
-        socketId: c.socketId,
-        location: c.location,
-      }))
-    );
     captainsInRadius.forEach((captain) => {
-      console.log("Sending to captain:", captain._id, captain.socketId);
       sendMessageToSocketId(captain.socketId, {
         event: "new-ride",
         data: rideWithUser,
       });
     });
+
+    return res.status(201).json(ride);
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: err.message });
@@ -113,7 +105,6 @@ module.exports.startRide = async (req, res) => {
       captain: req.captain,
     });
 
-    console.log("Ride found:", ride);
     sendMessageToSocketId(ride.user.socketId, {
       event: "ride-started",
       data: ride,
@@ -146,5 +137,4 @@ module.exports.endRide = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-  s;
 };
